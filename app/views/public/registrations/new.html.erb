@@ -5,9 +5,29 @@
 
       <h4>新規会員登録</h4>
 
-      <%= form_with model: @customer, url: new_customer_registration_path do |f| %>
+      <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <form class="form-horizontal">
+          <div class="form-group form-inline">
+            <label class="col-lg-3">
+              <%= f.label :名前 %>
+            </label>
+            <div class="col-lg-7">
+              （姓）　<%= f.text_field :last_name %>
+              （名）　<%= f.text_field :first_name %>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+            <label class="col-lg-3">
+              <%= f.label :フリガナ %>
+            </label>
+            <div class="col-lg-7">
+              （セイ）<%= f.text_field :last_name_kana %>
+              （メイ）<%= f.text_field :first_name_kana %>
+            </div>
+          </div>
+
           <div class="form-group form-inline">
             <label class="col-lg-3">
               <%= f.label :メールアドレス %>
@@ -16,6 +36,34 @@
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
           </div>
+
+          <div class="form-group form-inline">
+            <label class="col-lg-3">
+              <%= f.label :郵便番号（ハイフンなし） %>
+            </label>
+            <div class="col-lg-7">
+              <%= f.text_field :postal_code %>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+            <label class="col-lg-3">
+              <%= f.label :住所 %>
+            </label>
+            <div class="col-lg-7">
+              <%= f.text_field :address, style: "width:100%" %>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+            <label class="col-lg-3">
+              <%= f.label :電話番号（ハイフンなし） %>
+            </label>
+            <div class="col-lg-7">
+              <%= f.text_field :telephone_number %>
+            </div>
+          </div>
+
 
           <div class="form-group form-inline">
             <label class="col-lg-3">
@@ -38,7 +86,7 @@
           </div>
           </div>
 
-          <div class="actions">
+          <div class="d-grid gap-2 col-6 mx-auto">
             <%= f.submit "新規登録", class: "btn btn-success" %>
           </div>
         </form>
