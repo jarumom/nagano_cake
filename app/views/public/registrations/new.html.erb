@@ -8,86 +8,93 @@
       <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <form class="form-horizontal">
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :名前 %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               （姓）　<%= f.text_field :last_name %>
+            </div>
+            <div class="col">
               （名）　<%= f.text_field :first_name %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :フリガナ %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               （セイ）<%= f.text_field :last_name_kana %>
+            </div>
+            <div class="col">
               （メイ）<%= f.text_field :first_name_kana %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :メールアドレス %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :郵便番号（ハイフンなし） %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               <%= f.text_field :postal_code %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :住所 %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               <%= f.text_field :address, style: "width:100%" %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :電話番号（ハイフンなし） %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               <%= f.text_field :telephone_number %>
             </div>
           </div>
 
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :パスワード %>
               <% if @minimum_password_length %>
               (<%= @minimum_password_length %> 文字以上)
               <% end %>
             </label>
-            <div class="col-lg-7">
+            <div class="col">
               <%= f.password_field :password, autocomplete: "new-password" %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
-          <label class="col-lg-3">
-            <%= f.label :パスワード（確認用） %>
-          </label>
-          <div class="col-lg-7">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </div>
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :パスワード（確認用） %>
+            </label>
+            <div class="col">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
           </div>
 
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <%= f.submit "新規登録", class: "btn btn-success" %>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col">
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </div>
           </div>
         </form>
       <% end %>

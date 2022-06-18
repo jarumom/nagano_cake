@@ -13,6 +13,10 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_items = CartItem.all
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    render :index
   end
 
   private

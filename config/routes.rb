@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resource :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show]
+    get 'customers/mypage/edit' => 'customers#edit', as: 'edit_customers'
+    patch 'customers/update' => 'customers#update', as: 'update_customers'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
