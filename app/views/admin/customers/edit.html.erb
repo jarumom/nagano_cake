@@ -5,6 +5,15 @@
 
       <h4>会員情報編集</h4>
 
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
         <form class="form-horizontal">
           <div class="row">

@@ -99,7 +99,12 @@
         </form>
       <% end %>
 
-      <%= render "public/shared/links" %>
+      <br>
+
+      <h4>既に登録済の方</h4>
+      <p>
+        <%= link_to "こちら", new_customer_session_path %>　からログインしてください
+      </p>
 
     </div>
     <div class="col-lg-1"></div>

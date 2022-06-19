@@ -2,28 +2,39 @@
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
-      <div class="card" style="max-width">
-        <div class="row g-0">
-          <div class="col-lg-4">
-            <%= image_tag @item.image, class: "img-fluid rounded-start" %>
-          </div>
+      <div class="row g-0">
+        <div class="col-lg-4">
+          <%= image_tag @item.image, class: "img-fluid rounded-start" %>
+        </div>
 
-          <div class="col-lg-6">
-            <div class="card-body">
-              <h4 class="card-title"><%= @item.name %></h4>
-              <p class="card-text"><%= @item.introduction %></p>
-              <h5 class="card-text">¥<%= (@item.price*1.1).floor %></h5>
-              <div class="card-text">
-                <%= form_with model: @cart_item do |f| %>
-                  <% if customer_signed_in? %>
-                    <%= f.hidden_field :customer_id, :value => current_customer.id %>
-                  <% end %>
-                  <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.select :amount, *[1..5], include_blank: "個数選択" %>
-                  <%= f.submit "カートにいれる", class: "btn btn-success" %>
+        <div class="col-lg-6">
+          <div class="table table-borderless">
+            <tr>
+              <h4><%= @item.name %></h4>
+            </tr>
+
+            <tr><%= @item.introduction %></tr>
+
+            <tr>
+              <h5>¥<%= (@item.price*1.1).floor %></h5>
+            </tr>
+
+            <tr>
+              <%= form_with model: @cart_item do |f| %>
+              <td>
+                <% if customer_signed_in? %>
+                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
                 <% end %>
-              </div>
-            </div>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.select :amount, *[1..5], include_blank: "個数選択" %>
+              </td>
+
+              <td>
+                <%= f.submit "カートにいれる", class: "btn btn-success" %>
+              </td>
+              <% end %>
+            </tr>
+
           </div>
         </div>
       </div>

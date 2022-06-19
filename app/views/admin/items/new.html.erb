@@ -4,9 +4,19 @@
     <div class="col-lg-10">
 
       <h4>商品新規登録</h4>
+
+      <% if @item.errors.any? %>
+        <%= @item.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
       <form class="form-horizontal">
-        <div class="form-group form-inline">
+        <div class="row">
           <label class="col-lg-3">
             <%= f.label :商品画像 %>
           </label>
@@ -15,7 +25,7 @@
           </div>
         </div>
 
-        <div class="form-group form-inline">
+        <div class="row">
           <label class="col-lg-3">
             <%= f.label :商品名 %>
           </label>
@@ -24,7 +34,7 @@
           </div>
         </div>
 
-        <div class="form-group form-inline">
+        <div class="row">
           <label class="col-lg-3">
             <%= f.label :商品説明 %>
           </label>
@@ -33,7 +43,7 @@
           </div>
         </div>
 
-        <div class="form-group form-inline">
+        <div class="row">
           <label class="col-lg-3">
             <%= f.label :ジャンル %>
           </label>
@@ -42,7 +52,7 @@
           </div>
         </div>
 
-        <div class="form-group form-inline">
+        <div class="row">
           <label class="col-lg-3">
             <%= f.label :税抜価格 %>
           </label>
@@ -51,7 +61,7 @@
           </div>
         </div>
 
-        <div class="form-group form-inline">
+        <div class="row">
           <label class="col-lg-3">
             <%= f.label :販売ステータス %>
           </label>
@@ -63,7 +73,12 @@
           </div>
         </div>
 
-        <%= f.submit "新規登録", class: "btn btn-success" %>
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col">
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </div>
+        </div>
 
       </form>
       <% end %>

@@ -13,32 +13,32 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <td class="table-active">氏名</td>
+            <td class="col-lg-3 table-active">氏名</td>
             <td><%= @customer.full_name %></td>
           </tr>
 
           <tr>
-            <td class="table-active">カナ</td>
+            <td class="col-lg-3 table-active">カナ</td>
             <td><%= @customer.full_name_kana %></td>
           </tr>
 
           <tr>
-            <td class="table-active">郵便番号</td>
+            <td class="col-lg-3 table-active">郵便番号</td>
             <td><%= @customer.postal_code %></td>
           </tr>
 
           <tr>
-            <td class="table-active">住所</td>
+            <td class="col-lg-3 table-active">住所</td>
             <td><%= @customer.address %></td>
           </tr>
 
           <tr>
-            <td class="table-active">電話番号</td>
+            <td class="col-lg-3 table-active">電話番号</td>
             <td><%= @customer.telephone_number %></td>
           </tr>
 
           <tr>
-            <td class="table-active">メールアドレス</td>
+            <td class="col-lg-3 table-active">メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
 
@@ -49,6 +49,8 @@
         <h5 class="col-lg-3">配送先</h5>
         <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
       </div>
+
+      <br>
 
       <div class="row">
         <h5 class="col-lg-3">注文履歴</h5>

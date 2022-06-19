@@ -9,33 +9,41 @@
       <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <form class="form-horizontal">
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :メールアドレス %>
             </label>
-            <div class="col-lg-7">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="col">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width:100%" %>
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :パスワード %>
               <% if @minimum_password_length %>
               (<%= @minimum_password_length %> 文字以上)
               <% end %>
             </label>
-            <div class="col-lg-7">
-              <%= f.password_field :password, autocomplete: "new-password" %>
+            <div class="col">
+              <%= f.password_field :password, autocomplete: "new-password", style: "width:100%" %>
             </div>
           </div>
 
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <%= f.submit "ログイン", class: "btn btn-primary"  %>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col">
+              <%= f.submit "ログイン", class: "btn btn-primary" %>
+            </div>
           </div>
       <% end %>
 
-      <%= render "public/shared/links" %>
+      <br>
+
+      <h4>会員登録がお済みでない方</h4>
+      <p>
+        <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください
+      </p>
 
     </div>
     <div class="col-lg-1"></div>

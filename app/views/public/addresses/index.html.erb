@@ -1,2 +1,73 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+
+      <h4>配送先登録／一覧</h4>
+
+      <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
+        <form class="form-horizontal">
+
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :郵便番号（ハイフンなし） %>
+            </label>
+            <div class="col">
+              <%= f.text_field :postal_code, autofocus: true %>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :住所 %>
+            </label>
+            <div class="col-lg-5">
+              <%= f.text_field :address, autofocus: true, style: "width:100%" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :宛名 %>
+            </label>
+            <div class="col">
+              <%= f.text_field :name, autofocus: true %>
+            </div>
+            <div class="col">
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </div>
+          </div>
+        </form>
+      <% end %>
+
+      <br>
+
+      <table class="table col-lg-8">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">郵便番号</th>
+              <th scope="col">住所</th>
+              <th scope="col">宛名</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+        <% @addresses.each do |address| %>
+          <tbody>
+            <tr>
+              <td><%= address.postal_code %></td>
+              <td><%= address.address %></td>
+              <td><%= address.name %></td>
+              <td>
+                <%= link_to "編集する", edit_address_path(address), class: "btn btn-success btn-sm" %>
+                <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>

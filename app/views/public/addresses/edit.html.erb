@@ -1,2 +1,46 @@
-<h1>Addresses#edit</h1>
-<p>Find me in app/views/addresses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+
+      <h4>配送先登録／一覧</h4>
+
+      <%= form_with model: @address, url: address_path, method: :patch do |f| %>
+        <form class="form-horizontal">
+
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :郵便番号（ハイフンなし） %>
+            </label>
+            <div class="col">
+              <%= f.text_field :postal_code, autofocus: true %>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :住所 %>
+            </label>
+            <div class="col-lg-5">
+              <%= f.text_field :address, autofocus: true, style: "width:100%" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-lg-3">
+              <%= f.label :宛名 %>
+            </label>
+            <div class="col">
+              <%= f.text_field :name, autofocus: true %>
+            </div>
+            <div class="col">
+              <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+            </div>
+          </div>
+        </form>
+      <% end %>
+
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>

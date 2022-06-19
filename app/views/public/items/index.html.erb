@@ -6,22 +6,23 @@
       <h4>商品一覧</h4>
 
 　　　<!--横並びにしたい-->
+
       <% @items.each do |item| %>
-        <div class="row row-cols-4">
-          <div class="col">
+        <span class="row row-cols-4">
+          <span class="col">
           <%= link_to item_path(item.id) do %>
-            <div class="card">
+            <span class="card">
               <%= image_tag item.get_image, class: "card-img-top" %>
-              <div class="card-body">
+              <span class="card-body">
                 <p class="card-title">
                   <%= item.name %>
                 </p>
-                ¥<%= item.price %>
-              </div>
-            </div>
+                ¥<%= item.with_tax_price %>
+              </span>
+            </span>
           <% end %>
-          </div>
-        </div>
+          </span>
+        </span>
 
       <% end %>
 

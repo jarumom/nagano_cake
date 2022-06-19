@@ -3,11 +3,11 @@
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
 
-      <h4>管理者ログイン</h4>
+      <h4 class>管理者ログイン</h4>
 
       <%= form_with model: @admin, url: admin_session_path do |f| %>
         <form class="form-horizontal">
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :メールアドレス %>
             </label>
@@ -16,7 +16,7 @@
             </div>
           </div>
 
-          <div class="form-group form-inline">
+          <div class="row">
             <label class="col-lg-3">
               <%= f.label :パスワード %>
             </label>
@@ -26,8 +26,11 @@
           </div>
           <br>
 
-          <div class="actions">
-            <%= f.submit "ログイン" %>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col">
+              <%= f.submit "ログイン", class: "btn btn-primary" %>
+            </div>
           </div>
         </form>
 
